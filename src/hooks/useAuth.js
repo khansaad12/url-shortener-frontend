@@ -9,7 +9,7 @@ export const useAuth = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const data = await axios.get(`${API_BASE_URL}/api/auth/me`, {
+        const data = await axios.get(`${API_BASE_URL}/api/auth`, {
           withCredentials: true,
         });
         if (data.data.status === "success") {
