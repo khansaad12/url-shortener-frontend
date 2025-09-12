@@ -40,6 +40,9 @@ export function Signup() {
         name,
         email,
         password
+      },
+    {
+        withCredentials : true
       })
       if(data.data.status === "success"){
         console.log("registered success")
