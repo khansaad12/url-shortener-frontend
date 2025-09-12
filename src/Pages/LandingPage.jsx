@@ -21,7 +21,7 @@ export default function LandingPage() {
     e.preventDefault();
     if (!url) return;
     setLoading(true);
-    const data = await axios.post(`${API_BASE_URL}/api/url`, { url }, { withCredentials: true });
+    const data = await axios.post(`${API_BASE_URL}/api/url/create`, { url }, { withCredentials: true });
      console.log(data)
     if (data.data.status === "success") {
       console.log("hello")
