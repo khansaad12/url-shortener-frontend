@@ -146,7 +146,7 @@ const UrlDashboard = () => {
             </thead>
             <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               {urls.map((url) => {
-                const shortLink = `${req.protocol}://${url.short_url}`;
+                const shortLink = `http://${url.short_url}`;
                 const copied = copiedId === url._id;
 
                 return (
