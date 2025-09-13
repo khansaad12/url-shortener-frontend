@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
   // Logout function
   const logout = async () => {
     try {
-      await axios.post(
+      const data = await axios.post(
         `${API_BASE_URL}/api/auth/logout`,
         {},
         { withCredentials: true }
