@@ -48,8 +48,8 @@ export function Login() {
           navigate("/dashboard")
       }
     } catch (error) {
-      console.log(error.response.data.message)
-      setErrors(error.response.data);
+  console.log(error.response?.data?.message || "Login failed");
+  setErrors(error.response?.data || {});
     } finally {
       setIsLoading(false);
     }
