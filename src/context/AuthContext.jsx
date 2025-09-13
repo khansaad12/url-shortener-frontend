@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
         {},
         { withCredentials: true }
       );
-      if (data.status === "success") {
+      if (data.data.status === "success") {
         setIsAuthenticated(false);
         setUser(null);
       }
