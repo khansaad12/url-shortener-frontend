@@ -18,10 +18,55 @@ export default function Navbar() {
         animate={{ opacity: 1, x: 0 }}
         className="flex items-center hover:cursor-pointer"
       >
-        <FaLink className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-        <span className="ml-2 text-xl font-bold text-gray-900  bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-          ShrtNinja
-        </span>
+        <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="250"
+      height="100"
+      viewBox="0 0 250 100"
+    >
+      <defs>
+        {/* Gradient for text */}
+        <linearGradient id="gradText" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#4facfe" stopOpacity="1" />
+          <stop offset="100%" stopColor="#00f2fe" stopOpacity="1" />
+        </linearGradient>
+        {/* Gradient for icon */}
+        <linearGradient id="gradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#43e97b" stopOpacity="1" />
+          <stop offset="100%" stopColor="#38f9d7" stopOpacity="1" />
+        </linearGradient>
+      </defs>
+
+      {/* Icon: two chain links */}
+      <g transform="translate(20,33) scale(0.6)">
+        <path
+          d="M30 40a15 15 0 0 1 0-30h25a15 15 0 0 1 0 30h-5"
+          fill="none"
+          stroke="url(#gradIcon)"
+          strokeWidth="8"
+          strokeLinecap="round"
+        />
+        <path
+          d="M70 10a15 15 0 0 1 0 30H45a15 15 0 0 1 0-30h5"
+          fill="none"
+          stroke="url(#gradIcon)"
+          strokeWidth="8"
+          strokeLinecap="round"
+        />
+      </g>
+
+      {/* Text */}
+      <text
+        x="85"
+        y="65"
+        fontFamily="Segoe UI, Helvetica, Arial, sans-serif"
+        fontSize="40"
+        fontWeight="700"
+        fill="url(#gradText)"
+      >
+        Bitlink
+      </text>
+    </svg>
       </motion.div>
 
       {/* Links */}
