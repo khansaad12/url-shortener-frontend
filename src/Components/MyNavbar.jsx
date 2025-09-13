@@ -2,11 +2,11 @@ import { FaLink } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from "../context/AuthContext"; 
 import { Link } from "react-scroll";
 export default function Navbar() {
   const navigate = useNavigate();
-  const {isAuthenticated} = useAuth();
+  const {isAuthenticated , loading} = useAuth();
   return (
    <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +85,7 @@ export default function Navbar() {
         >
           <ThemeToggle />
         </motion.div> 
-        {isAuthenticated ?(
+        {loading ? null : isAuthenticated ?(
           <motion.button 
           onClick={() => navigate("/dashboard")}
           whileHover={{ scale: 1.05 }}

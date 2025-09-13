@@ -3,15 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { VscAccount } from "react-icons/vsc";
 import Transition from '../utils/Transition';
 // import UserAvatar from '../images/user-avatar-32.png';
-import { useAuth } from '../hooks/useAuth';
-import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 
 function DropdownProfile({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const trigger = useRef(null);
   const dropdown = useRef(null);
-  const { user, loading } = useAuth(); // Assuming your hook provides loading state
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const { user, loading ,logout} = useAuth(); // Assuming your hook provides loading state
 
   const navigate = useNavigate()
   // Close the dropdown when clicking outside
@@ -35,19 +33,7 @@ function DropdownProfile({ align }) {
     return () => document.removeEventListener('keydown', keyHandler);
   }, [dropdownOpen]);
 
-  const logout = async ()=>{
-    try {
-       const data = await axios.post(`${API_BASE_URL}/api/auth/logout`,{},{
-        withCredentials: true
-       });
-    if(data.data.status ==="success"){
-        navigate("/")
-    }
-    } catch (error) {
-        console.log("logout error",error)
-    }
-   
-  }
+ 
 
   // Show loading state while user data is being fetched
   if (loading) {
@@ -111,6 +97,16 @@ function DropdownProfile({ align }) {
           </div>
           <ul>
             <li>
+              <button
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen);
+                  logout();        // ✅ directly from context
+                  navigate("/");   // optional, if you want redirect
+                }}
+                className="w-full text-left font-medium text-sm text-violet-500 hover:text-violet-600 dark:hover:text-violet-400 flex items-center py-1 px-3"
+              >
+                Sign Out
+              </button>
               <Link
                 className="font-medium text-sm text-violet-500 hover:text-violet-600 dark:hover:text-violet-400 flex items-center py-1 px-3"
                 to="/logout"

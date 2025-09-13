@@ -9,7 +9,7 @@ import Dashboard from './Pages/Dashboard';
 import LandingPage from './Pages/LandingPage';
 import { Signup } from './Components/Signup';
 import { Login } from './Components/Login';
-import {useAuth} from './hooks/useAuth'
+import { useAuth } from "./context/AuthContext"; 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   if (loading) return <p>Loading...</p>;
