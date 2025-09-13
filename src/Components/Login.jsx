@@ -10,7 +10,7 @@ export function Login() {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate()
-  const { setIsAuthenticated, setUser } = useAuth();
+  const { checkAuth } = useAuth();
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const validate = () => {
     const newErrors = {};
@@ -43,8 +43,7 @@ export function Login() {
     )
       if(data.data.status == "success"){
           console.log(data.data)
-          setIsAuthenticated(true);
-          setUser(data.data.user);
+          await checkAuth();
           navigate("/dashboard")
       }
     } catch (error) {
