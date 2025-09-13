@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaEnvelope, FaLock} from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 export function Login() {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ export function Login() {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate()
+  const { setIsAuthenticated, setUser } = useAuth();
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const validate = () => {
     const newErrors = {};
@@ -41,6 +43,8 @@ export function Login() {
     )
       if(data.data.status == "success"){
           console.log(data.data)
+          setIsAuthenticated(true);
+          setUser(data.data.user);
           navigate("/dashboard")
       }
     } catch (error) {
