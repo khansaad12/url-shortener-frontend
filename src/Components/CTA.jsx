@@ -15,7 +15,7 @@ export default function CTA() {
 
         {/* Subtext */}
         <p className="text-sm sm:text-base lg:text-lg text-indigo-100 dark:text-gray-400 mb-6 sm:mb-8 px-2">
-          Join thousands of users who trust <span className="font-semibold">ShrtNinja</span> for fast and secure link shortening.
+          Join thousands of users who trust <span className="font-semibold">BitLink</span> for fast and secure link shortening.
         </p>
 
         {/* Button */}
